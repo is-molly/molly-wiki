@@ -1,0 +1,15 @@
+# Node modules
+**/node_modules/**
+
+# Vuepress Cache
+**/.vuepress/.cache/**
+# Vuepress Temp
+**/.vuepress/.temp/**
+# Vuepress Output
+dist/
+
+# idea
+.idea
+
+# lock file
+*-lock.yaml
