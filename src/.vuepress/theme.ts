@@ -1,21 +1,21 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
-import { MR_HOPE_AVATAR } from "./logo.js";
+import { RECORD_NUMBER } from './constant.js'
 
 export default hopeTheme({
-  hostname: "https://mister-hope.github.io",
+  hostname: "https://monap.cn",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mister-hope.com",
+    name: "monap",
+    url: "https://monap.cn",
   },
 
   iconAssets: "fontawesome-with-brands",
 
-  logo: "https://theme-hope-assets.vuejs.press/logo.svg",
+  logo: "/assets/icon/book.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "polaris/molly-wiki",
 
   docsDir: "src",
 
@@ -26,53 +26,24 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  footer: RECORD_NUMBER,
   displayFooter: true,
 
   // 博客相关
   blog: {
-    description: "一个前端开发者",
+    description: "coder",
     intro: "/intro.html",
     medias: {
-      Baidu: "https://example.com",
-      BiliBili: "https://example.com",
-      Bitbucket: "https://example.com",
-      Dingding: "https://example.com",
-      Discord: "https://example.com",
-      Dribbble: "https://example.com",
-      Email: "mailto:info@example.com",
-      Evernote: "https://example.com",
-      Facebook: "https://example.com",
-      Flipboard: "https://example.com",
-      Gitee: "https://example.com",
-      GitHub: "https://example.com",
-      Gitlab: "https://example.com",
-      Gmail: "mailto:info@example.com",
-      Instagram: "https://example.com",
-      Lark: "https://example.com",
-      Lines: "https://example.com",
-      Linkedin: "https://example.com",
-      Pinterest: "https://example.com",
-      Pocket: "https://example.com",
-      QQ: "https://example.com",
-      Qzone: "https://example.com",
-      Reddit: "https://example.com",
-      Rss: "https://example.com",
-      Steam: "https://example.com",
-      Twitter: "https://example.com",
-      Wechat: "https://example.com",
-      Weibo: "https://example.com",
-      Whatsapp: "https://example.com",
-      Youtube: "https://example.com",
-      Zhihu: "https://example.com",
-      MrHope: ["https://mister-hope.com", MR_HOPE_AVATAR],
+      BiliBili: "https://space.bilibili.com/260588442",
+      Gitee: "https://gitee.com/mp2333",
+      GitHub: "https://github.com/mp-polaris",
     },
   },
 
   // 加密配置
   encrypt: {
     config: {
-      "/demo/encrypt.html": ["1234"],
+      "/demo/encrypt.html": ["1234321"],
     },
   },
 
@@ -94,6 +65,15 @@ export default hopeTheme({
     //   provider: "Waline",
     //   serverURL: "https://waline-comment.vuejs.press",
     // },
+
+    // 搜索插件
+    docsearch: {
+      // 你的选项
+      // appId, apiKey 和 indexName 是必填的
+      appId: "80225A5INZ",
+      apiKey: "26144639fd088d6401c7d1450e410cd2",
+      indexName: "monap"
+    },
 
     components: {
       components: ["Badge", "VPCard"],
