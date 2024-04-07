@@ -1,7 +1,7 @@
 ---
 home: true
 layout: BlogHome
-icon: home
+icon: lucide:home
 title: 主页
 bgImage: /assets/images/sky.jpg
 heroImage: /assets/icon/boy.svg

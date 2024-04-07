@@ -4,14 +4,14 @@ import sidebar from "./sidebar.js";
 import { RECORD_NUMBER } from './constant.js'
 
 export default hopeTheme({
-  hostname: "https://monap.cn",
+  hostname: "http://monap.cn",
 
   author: {
     name: "monap",
-    url: "https://monap.cn",
+    url: "http://monap.cn",
   },
 
-  iconAssets: "fontawesome-with-brands",
+  iconAssets: "iconify",
 
   logo: "/assets/icon/book.svg",
 

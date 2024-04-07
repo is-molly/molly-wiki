@@ -1,5 +1,5 @@
 ---
-icon: circle-info
+icon: emojione-v1:page
 cover: /assets/images/people.png
 ---
 
