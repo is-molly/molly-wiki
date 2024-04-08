@@ -5,7 +5,7 @@ export default defineUserConfig({
   base: "/",
 
   lang: "zh-CN",
-  title: "molly小站",
+  title: "molly wiki",
   description: "一个vuepress-theme-hope的wiki站",
 
   theme,
