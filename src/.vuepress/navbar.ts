@@ -36,13 +36,17 @@ export default navbar([
   {
     text: "运维",
     icon: "grommet-icons:system",
-    prefix: "/posts/",
     children: [
       {
-        text: "操作系统",
+        text: "Linux",
         children: [
-          { text: "Linux", icon: "/assets/icon/linux.svg", link: "1" },
-          { text: "Windows", icon: "/assets/icon/windows.svg", link: "2" },
+          { text: "Linux基础", icon: "/assets/icon/linux.svg", link: "1" },
+        ],
+      },
+      {
+        text: "Windows",
+        children: [
+          { text: "批处理基础", icon: "/assets/icon/windows-bat.svg", link: "/DevOps/Windows/Bat/" },
         ],
       },
       {
@@ -63,67 +67,55 @@ export default navbar([
   {
     text: "基础",
     icon: "ic:baseline-balance",
-    prefix: "/posts/",
     children: [
-
+      {
+        text: "底层",
+        children: [
+          { text: "计算机网络", icon: "/assets/icon/network.svg", link: "1" },
+          { text: "操作系统", icon: "/assets/icon/os.svg", link: "1" },
+        ],
+      },
+      {
+        text: "数据结构与算法",
+        children: [
+          { text: "数据结构", icon: "/assets/icon/dataStructure.svg", link: "/Base/DataStructure/" },
+          { text: "算法", icon: "/assets/icon/arithmetic.svg", link: "/Base/Algorithm/" },
+        ],
+      },
     ],
   },
   {
     text: "项目",
     icon: "octicon:project-16",
-    prefix: "/posts/",
     children: [
 
     ],
   },
   {
+    text: "开发",
+    icon: "fluent:window-dev-edit-16-regular",
+    children: [
+      {
+        text: "开发工具",
+        children: [
+          { text: "IntelliJ IDEA", icon: "/assets/icon/intellij-idea.svg", link: "/Development/DevTools/IntellijIdea/" },
+          { text: "VSCode", icon: "/assets/icon/vscode.svg", link: "/Development/DevTools/VSCode/" },
+        ],
+      },
+    ],
+  },
+  {
     text: "随笔",
     icon: "icons8:idea",
-    prefix: "/posts/",
     children: [
 
     ],
   },
-  // {
-  //   text: "博文",
-  //   icon: "pen-to-square",
-  //   prefix: "/posts/",
-  //       children: [
+  {
+    text: "ArchLinux",
+    icon: "logos:archlinux",
+    children: [
 
-  //     {
-  //       text: "苹果",
-  //       icon: "pen-to-square",
-  //       prefix: "apple/",
-  //       children: [
-  //         { text: "苹果1", icon: "pen-to-square", link: "1" },
-  //         { text: "苹果2", icon: "pen-to-square", link: "2" },
-  //         "3",
-  //         "4",
-  //       ],
-  //     },
-  //     {
-  //       text: "香蕉",
-  //       icon: "pen-to-square",
-  //       prefix: "banana/",
-  //       children: [
-  //         {
-  //           text: "香蕉 1",
-  //           icon: "pen-to-square",
-  //           link: "1",
-  //         },
-  //         {
-  //           text: "香蕉 2",
-  //           icon: "pen-to-square",
-  //           link: "2",
-  //         },
-  //         "3",
-  //         "4",
-  //       ],
-  //     },
-  //     { text: "樱桃", icon: "pen-to-square", link: "cherry" },
-  //     { text: "火龙果", icon: "pen-to-square", link: "dragonfruit" },
-  //     "tomato",
-  //     "strawberry",
-  //   ],
-  // },
+    ],
+  },
 ]);
