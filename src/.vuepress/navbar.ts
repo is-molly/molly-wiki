@@ -40,7 +40,7 @@ export default navbar([
       {
         text: "Linux",
         children: [
-          { text: "Linux基础", icon: "/assets/icon/linux.svg", link: "1" },
+          { text: "Linux基础", icon: "/assets/icon/linux.svg", link: "/DevOps/Linux/Base/" },
         ],
       },
       {
@@ -52,7 +52,7 @@ export default navbar([
       {
         text: "中间件",
         children: [
-          { text: "MySQL", icon: "/assets/icon/mysql.svg", link: "1" },
+          { text: "MySQL", icon: "/assets/icon/mysql.svg", link: "/DevOps/Middleware/MySQL/" },
         ],
       },
       {

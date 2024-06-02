@@ -12,4 +12,6 @@ export default sidebar({
   "/Development/DevTools/IntellijIdea": "structure",
   "/Development/DevTools/VSCode": "structure",
   "/DevOps/Windows/Bat/": "structure",
+  "/DevOps/Linux/Base/": "structure",
+  "/DevOps/Middleware/MySQL/":"structure"
 });
