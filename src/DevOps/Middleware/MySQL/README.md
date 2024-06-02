@@ -12,4 +12,3 @@ category:
 <!-- more -->
 
   1. [MySQL备份与恢复](MySQL备份与恢复.md)
-  2. [MySQL备份与恢复2](MySQL备份与恢复2.md)
