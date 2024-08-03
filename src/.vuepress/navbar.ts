@@ -31,6 +31,12 @@ export default navbar([
           { text: "Vue2", icon: "/assets/icon/vue.svg", link: "/FrontEnd/Framework/Vue2/" },
         ],
       },
+      {
+        text: "工程化",
+        children: [
+          { text: "包管理器", icon: "/assets/icon/vue.svg", link: "/FrontEnd/Engineering/PackageManager/" },
+        ],
+      },
     ],
   },
   {
@@ -71,7 +77,7 @@ export default navbar([
       {
         text: "底层",
         children: [
-          { text: "计算机网络", icon: "/assets/icon/network.svg", link: "1" },
+          { text: "计算机网络", icon: "/assets/icon/network.svg", link: "/Base/Network/" },
           { text: "操作系统", icon: "/assets/icon/os.svg", link: "1" },
         ],
       },
