@@ -47,6 +47,7 @@ export default navbar([
         text: "Linux",
         children: [
           { text: "Linux基础", icon: "/assets/icon/linux.svg", link: "/DevOps/Linux/Base/" },
+          { text: "Bash编程", icon: "/assets/icon/bash.svg", link: "/DevOps/Linux/Bash" },
         ],
       },
       {
@@ -94,18 +95,30 @@ export default navbar([
     text: "项目",
     icon: "octicon:project-16",
     children: [
-
+      {
+        text: "开发工具",
+        children: [
+          { text: "IntelliJ IDEA", icon: "/assets/icon/intellij-idea.svg", link: "/Development/DevTools/IntellijIdea/" },
+          { text: "VSCode", icon: "/assets/icon/vscode.svg", link: "/Development/DevTools/VSCode/" },
+        ],
+      },
     ],
   },
   {
     text: "开发",
     icon: "fluent:window-dev-edit-16-regular",
     children: [
+      
+    ],
+  },
+  {
+    text: "架构",
+    icon: "fluent:box-search-16-regular",
+    children: [
       {
-        text: "开发工具",
+        text: "云计算",
         children: [
-          { text: "IntelliJ IDEA", icon: "/assets/icon/intellij-idea.svg", link: "/Development/DevTools/IntellijIdea/" },
-          { text: "VSCode", icon: "/assets/icon/vscode.svg", link: "/Development/DevTools/VSCode/" },
+          { text: "云原生", icon: "/assets/icon/cloud.svg", link: "/DevOps/Cloud/Docker/" },
         ],
       },
     ],

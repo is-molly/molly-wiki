@@ -6,10 +6,10 @@ import { RECORD_NUMBER } from './constant.js'
 export default hopeTheme({
   hostname: "http://monap.cn",
 
-  author: {
-    name: "monap",
-    url: "http://monap.cn",
-  },
+  // author: {
+  //   name: "monap",
+  //   url: "http://monap.cn",
+  // },
 
   iconAssets: "iconify",
 
@@ -26,7 +26,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: RECORD_NUMBER,
+  footer: "2024 © monap - <a href='https://beian.miit.gov.cn/' target='_blank'>" + RECORD_NUMBER + "</a>",
   displayFooter: true,
 
   // 博客相关

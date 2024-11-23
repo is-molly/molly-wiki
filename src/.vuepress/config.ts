@@ -5,7 +5,7 @@ export default defineUserConfig({
   base: "/",
 
   lang: "zh-CN",
-  title: "molly notes",
+  title: "生活的记录",
   description: "一个vuepress-theme-hope的notes站",
 
   theme,
