@@ -130,7 +130,12 @@ rm -rf /var/lib/docker
 mkdir -p /etc/docker
 tee /etc/docker/daemon.json <<-'EOF'
 {
-  "registry-mirrors": ["https://sjmzhm90.mirror.aliyuncs.com"]
+  "registry-mirrors": [
+    "https://hub.rat.dev",
+    "https://docker.1panel.live",
+    "https://docker.rainbond.cc",
+    "https://docker.1ms.run"
+  ]
 }
 EOF
 systemctl daemon-reload
