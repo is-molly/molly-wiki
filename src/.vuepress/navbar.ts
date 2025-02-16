@@ -47,7 +47,8 @@ export default navbar([
         text: "Linux",
         children: [
           { text: "Linux基础", icon: "/assets/icon/linux.svg", link: "/DevOps/Linux/Base/" },
-          { text: "Bash编程", icon: "/assets/icon/bash.svg", link: "/DevOps/Linux/Bash" },
+          { text: "Bash编程", icon: "/assets/icon/bash.svg", link: "/DevOps/Linux/Bash/" },
+          { text: "Ansible", icon: "/assets/icon/ansible.svg", link: "/DevOps/Linux/Ansible/" },
         ],
       },
       {

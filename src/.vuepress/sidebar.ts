@@ -15,5 +15,7 @@ export default sidebar({
   "/Development/DevTools/VSCode": "structure",
   "/DevOps/Windows/Bat/": "structure",
   "/DevOps/Linux/Base/": "structure",
+  "/DevOps/Linux/Bash/": "structure",
+  "/DevOps/Linux/Ansible/": "structure",
   "/DevOps/Middleware/MySQL/": "structure",
 });
