@@ -288,6 +288,16 @@ Ansible配置文件允许使用两种注释字符：井号或分号。
 
 分号字符可以注释掉所在行中其右侧的所有内容。它可以和指令位于同一行中，只要该指令在其左侧。
 
+## ansible 相关工具
+
+- ansible                       主程序，临时命令执行工具 
+- ansible-doc               查看配置文档，模块功能查看工具，相当于man
+- ansible-playbook     定制自动化任务，编排剧本工具，相当于脚本
+- ansible-pull               远程执行命令的工具
+- ansible-vault             文件加密工具
+- ansible-console        基于Console界面与用户交互的执行工具
+- ansible-galaxy           下载/上传优秀代码或Roles模块的官网平台
+
 ## 运行临时命令
 
 使用临时命令可以快速执行单个Ansible任务，不需要将它保存下来供以后再次运行。它们是简单的在线操作，无需编写playbook即可运行。
@@ -320,6 +330,26 @@ host-pattern参数用于指定在其上运行临时命令的受管主机。它�
     "ping": "pong"
 }
 ......
+```
+
+### 选项说明
+
+```shell
+--version      # 查看版本
+-m module      # 指定模块，默认为command
+-v             # 详细过程， -vv -vvv更详细
+--list-hosts   # 显示主机列表，可用 --list 简写
+-C --check     # 检查，不执行
+-T --timeout=TIMEOUT # 执行命令的超时时间，默认10s
+
+
+-k --ask-pass  # 提示输入ssh连接密码，默认key验证
+-u --user=REMOTE_USER # 执行远程执行的用户，默认root
+-b --become    # 代替旧版的sudo实现，通过sudo机制实现权限提升
+--become-user=USER_NAME # 指定sudo的runas用户，默认为root
+-K --ask-become-pass # 提示输入sudo时的命令
+-f FORKS, --forks FORKS # 指定并发同时执行ansible任务的主机数
+-i INVENTORY, --inventory INVENTORY # 指定主机清单文件
 ```
 
 ### 使用临时命令通过模块来执行任务
@@ -424,4 +454,3 @@ command和shell模块都要求受管主机上安装正常工作的Python。第�
 ```shell
 ansible --help
 ```
-

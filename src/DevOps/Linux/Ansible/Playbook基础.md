@@ -3,17 +3,187 @@ order: 5
 date: 2025-02-16
 ---
 
-# Playbook
+# Playbook基础
+
+## 概述
+
+### Playbook组成
+
+- 一个playbook(剧本)文件是一个YAML语言编写的文本文件
+- 通常一个playbook只包括一个play，但可以包括多个Play
+- 一个play的主要包括两部分：主机和tasks，即实现在指定一组主机上执行一个tasks定义好的任务列表
+- 一个tasks中可以有一个或多个task任务
+- 每一个Task本质上就是调用ansible的一个module
+- 在复杂场景中，一个playbook中也可以包括多个play，实现对多组不同的主机执行不同的任务
+
+![image-20250420214748629](./images/image-20250420214748629.png)
+
+### Playbook与Ad-Hoc对比
+
+> Ad-Hoc：临时命令
+
+- Playbook是对多个AD-Hoc的一种编排组合的实现方式
+- Playbook能控制任务执行的先后顺序
+- Playbook可以持久保存到文件中从而方便多次调用运行，而Ad-Hoc只能临时运行
+- Playbook适合复杂的重复性的任务，而Ad-Hoc适合做快速简单的一次性任务
+
+## ansible-playbook参数
+
+### 常用命令参数
+
+```shell
+-k(–ask-pass)        # 用来交互输入ssh密码
+-K(-ask-become-pass) # 用来交互输入sudo密码
+-u                   # 指定用户
+
+--syntax-check    # 检查yaml文件的语法是否正确
+--list-task       # 检查tasks任务
+--list-hosts      # 检查生效的主机
+--start-at-task='Copy Nginx.conf'  # 指定从某个task开始运行
+```
+
+### 完整命令参数
+
+```shell
+Options:
+  --ask-vault-pass   # 加密playbook文件时提示输入密码
+  -C, --check        # 模拟执行，不会真正在机器上执行(查看执行会产生什么变化)
+  -D, --diff         # 当更新的文件数及内容较少时，该选项可显示这些文件不同的地方，该选项结合-C用会有较好的效果
+  -e EXTRA_VARS, --extra-vars=EXTRA_VARS  # 在Playbook中引入外部参数变量
+  --flush-cache      # 将fact清除到的远程主机缓存
+  --force-handlers   # 强制运行handlers的任务，即使在任务失败的情况下
+  -f FORKS, --forks=FORKS  # 并行任务数。FORKS被指定为一个整数,默认是5
+  -h, --help         # 打开帮助文档API
+  -i INVENTORY, --inventory-file=INVENTORY  # 指定要读取的Inventory文件
+  -l SUBSET, --limit=SUBSET  # 限定执行的主机范围
+  --list-hosts       # 列出执行匹配到的主机，但并不会执行
+  --list-tags        # 列出所有可用的tags
+  --list-tasks       # 出所有即将被执行的任务
+  -M MODULE_PATH, --module-path=MODULE_PATH # 要执行的模块的路径
+  --new-vault-password-file=NEW_VAULT_PASSWORD_FILE  # new vault password file for rekey
+  --output=OUTPUT_FILE  # output file name for encrypt or decrypt; use - for stdout
+  --skip-tags=SKIP_TAGS # 跳过指定的tags任务
+  --start-at-task=START_AT_TASK  # 从第几条任务(START_AT_TASK)开始执行
+  --step             # 逐步执行Playbook定义的任务，并经人工确认后继续执行下一步任务
+  --syntax-check     # 检查Playbook中的语法书写,并不实际执行
+  -t TAGS, --tags=TAGS  # 指定执行该tags的任务
+  --vault-password-file=VAULT_PASSWORD_FILE # vault password file
+  -v, --verbose      # 执行详细输出
+  --version          # 显示版本
+ 
+  Connection Options:
+    control as whom and how to connect to hosts
+ 
+    -k, --ask-pass   # ask for connection password
+    --private-key=PRIVATE_KEY_FILE, --key-file=PRIVATE_KEY_FILE # use this file to authenticate the connection
+    -u REMOTE_USER, --user=REMOTE_USER # 指定远程主机以USERNAME运行命令
+    -c CONNECTION, --connection=CONNECTION # 指定连接方式，可用选项paramiko (SSH)、ssh、local，local方式常用于crontab和kickstarts
+    -T TIMEOUT, --timeout=TIMEOUT  # SSH连接超时时间设定，默认10s
+    --ssh-common-args=SSH_COMMON_ARGS # specify common arguments to pass to sftp/scp/ssh (e.g.ProxyCommand)
+    --sftp-extra-args=SFTP_EXTRA_ARGS # specify extra arguments to pass to sftp only (e.g. -f, -l)
+    --scp-extra-args=SCP_EXTRA_ARGS   # specify extra arguments to pass to scp only (e.g. -l)
+    --ssh-extra-args=SSH_EXTRA_ARGS   # specify extra arguments to pass to ssh only (e.g. -R)
+ 
+  Privilege Escalation Options:
+    control how and which user you become as on target hosts
+ 
+    -s, --sudo          # 相当于Linux系统下的sudo命令
+    -U SUDO_USER, --sudo-user=SUDO_USER # 使用sudo，相当于Linux下的sudo命令
+    -S, --su            # run operations with su (deprecated, use become)
+    -R SU_USER, --su-user=SU_USER # run operations with su as this user (default=root)(deprecated, use become)
+    -b, --become        # run operations with become (does not imply password prompting)
+    --become-method=BECOME_METHOD # privilege escalation method to use (default=sudo),valid choices: [ sudo | su | pbrun | pfexec | doas |dzdo | ksu | runas ]
+    --become-user=BECOME_USER # run operations as this user (default=root)
+    --ask-sudo-pass     # 传递sudo密码到远程主机，来保证sudo命令的正常运行
+    --ask-su-pass       # ask for su password (deprecated, use become)
+    -K, --ask-become-pass # ask for privilege escalation password
+```
+
+## Playbook 核心组件
+
+一个playbook中由多个组件组成，其中所用到的常见组件类型如下：
+
+- Hosts执行的远程主机列表
+- Tasks任务集，由多个task的元素组成的列表实现，每个task是一个字典，一个完整的代码块功能需最少元素需包括name和task，一个name只能包括一个task
+- Variables内置变量或自定义变量在playbook中调用
+- Templates模板，可替换模板文件中的变量并实现一些简单逻辑的文件
+- Handlers 和notify结合使用，由特定条件触发的操作，满足条件方才执行，否则不执行
+- tags标签指定某条任务执行，用于选择运行playbook中的部分代码。ansible具有幂等性，因此会自动跳过没有变化的部分，即便如
+  此，有些代码为测试其确实没有发生变化的时间依然会非常地长。此时，如果确信其没有变化，就可以通过tags跳过此些代码片断
+
+### host 组件
+
+Hosts：playbook中的每一个play的目的都是为了让特定主机以某个指定的用户身份执行任务。hosts用于指定要执行指定任务的主机，
+须事先定义在主机清单中
+
+```ini
+one.example.com
+one.example.com:two.example.com
+192.168.1.50
+192.168.1.*
+webservers:dbservers    # 或者，两个组的并集
+webservers:&dbservers   # 与，两个组的交集
+webservers:!dbservers   # 在webservers组，但不在dbservers组
+```
+
+常见用法：
+
+```shell
+# 指定一个固定的主机列表
+- hosts:
+  -
+  -
+  
+# 使用模式匹配主机组
+- hosts: webservers
+
+# 动态获取主机列表（从ansible的inventory中获取webservers主机组中的成员列表）
+- hosts: "{{ groups['webservers'] }}"
+
+# 使用all关键字匹配所有主机
+- hosts: all
+
+# 此外还有一些高级的主机匹配方式，比如根据主机的IP地址，操作系统类型，标签来匹配主机
+```
+
+### remote_user 组件
+
+remote_user 是ansible-playbook的一个核心组件，它用于指定远程主机的连接用户。当ansible playbook与远程主机通信时，需要指定一个用户名或密码（或SSH密钥）以便连接到目标主机，通过指定remote_user，可以让 ansible playbook使用特定的用户名密码（或SSH密钥）连接远程主机。
+
+在playbook中，可以通过在hosts部分使用ansible_user或者ansible_ssh_user指定连接到远程主机的用户名。也可以在playbook的vars部分设置全局的ansible_user获取ansible_ssh_user。
+
+```yaml
+- name: Example playbook
+  hosts: example.com
+  remote_user: user
+  
+  tasks:
+    - name: Run a command on the remote host
+      command: whoami
+```
+
+### task列表和action组件
+
+在ansible的playbook中，任务（task）是一个包含一个或多个操作（action）的列表。任务定义了一个要在目标主机上执行的操作列表，其中每个操作（action）是执行的一项具体任务，任务和操作都可以使用ansible模块执行特定的操作，例如安装软件包，创建文件，运行命令等。
+
+```yaml
+tasks:
+  - name: Install Apache Web Server
+    apt:
+      name: apache2
+      state: present
+    become: true      # 切换到特权模式
+    
+  - name: Copy Configuration File
+    copy:
+      src: /path/to/config/file
+      dest: /etc/apache2/
+    become: true
+```
+
+> 其他组件后续章节详细讲解
 
 ## 实施 Playbook
-
-### Ansible Playbook与临时命令
-
-临时命令可以作为一次性命令对一组目标主机运行一项简单的任务。不过，若要真正发挥Ansible的力量，需要了解如何使用playbook以便轻松重复的方式对一组目标主机执行多项复杂的任务。
-
-play是针对清单中选定的主机运行的一组有序任务。playbook是一个文本文件，其中包含由一个或多个按特定顺序运行的play组成的列表。
-
-Play可以将一系列冗长而复杂的手动管理任务转变为可轻松重复的例程，并且具有可预测的成功成果。在playbook中，可以将play内的任务序列保存为人类可读并可立即运行的形式。根据任务的编写方式，任务本身记录了部署应用或基础架构所需的步骤。
 
 ### 格式化Ansible Playbook
 

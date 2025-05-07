@@ -54,6 +54,8 @@ Ansible还可以配置受管网络设备，例如路由器和交换机。Ansible
 
 ## 安装Ansible
 
+### 包管理器方式
+
 ```shell
 # 提供YUM源
 mv /etc/yum.repos.d/* /opt/
@@ -69,5 +71,19 @@ ansible --version
 
 # 通过使用setup模块验证localhost上的ansible_python_version
 ansible -m setup localhost|grep ansible_python_version
+
+# 查看可用的ansbile插件
+ansible-doc -l
 ```
 
+### pip方式
+
+```shell
+yum -y install python39 rust
+pip3 install ansible
+ansible --version
+```
+
+> ansible的模块虽然很多，但常用的也就30+，针对特定业务只需要熟悉特定10+模块就行了
+>
+> [模块文档](https://docs.ansible.com/ansible/latest/module_plugin_guide/index.html)
