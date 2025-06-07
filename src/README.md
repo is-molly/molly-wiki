@@ -1,6 +1,6 @@
 ---
 home: true
-layout: BlogHome
+layout: Blog
 icon: lucide:home
 title: 主页
 bgImage: /assets/images/sky.jpg
