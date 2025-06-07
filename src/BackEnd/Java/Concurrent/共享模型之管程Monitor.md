@@ -1206,13 +1206,15 @@ Klass Word是一个指针，指向了这个对象所对应的class类对象，�
 - 普通对象
 
 <table style="text-align: center;">
-	<tr>
-		<td colspan="2">Object Header (64 bits)</td>
-	</tr>
-	<tr>
-		<td>Mark work (32 bits)</td>
-		<td>Klass Word (32 bits)</td>
-	</tr>
+  <tbody>
+	  <tr>
+	  	<td colspan="2">Object Header (64 bits)</td>
+	  </tr>
+	  <tr>
+	  	<td>Mark work (32 bits)</td>
+	  	<td>Klass Word (32 bits)</td>
+	  </tr>
+  </tbody>
 </table>
 
 
@@ -1220,14 +1222,16 @@ Klass Word是一个指针，指向了这个对象所对应的class类对象，�
 - 数组对象
 
 <table style="text-align: center;">
-	<tr>
-		<td colspan="3">Object Header (96 bits)</td>
-	</tr>
-	<tr>
-		<td>Mark work (32 bits)</td>
-		<td>Klass Word (32 bits)</td>
-        <td>array length（32 bits）</td>
-	</tr>
+  <tbody>
+    <tr>
+      <td colspan="3">Object Header (96 bits)</td>
+    </tr>
+    <tr>
+      <td>Mark work (32 bits)</td>
+      <td>Klass Word (32 bits)</td>
+      <td>array length（32 bits）</td>
+    </tr>
+  </tbody>
 </table>
 
 
@@ -1237,40 +1241,42 @@ Klass Word是一个指针，指向了这个对象所对应的class类对象，�
 - 其中Mark Word结构为
 
 <table style="text-align: center;">
-	<tr>
-		<td colspan="5">Mark Word（32 bits）</td>
-        <td>State</td>
-	</tr>
-	<tr>
-		<td colspan="2">hashcode:25</td>
-		<td>age:4</td>
-        <td>biased_lock:1</td>
-        <td>01</td>
-        <td>Normal</td>
-	</tr>
-  <tr>
-  	<td>thread:23</td>
-    <td>epoch:2</td>
-    <td>age:4</td>
-    <td>biased_lock:1</td>
-    <td>01</td>
-    <td>Biased</td>
-  </tr>
-  <tr>
-  	<td colspan="4">ptr_to_lock_record:30</td>
-    <td>00</td>
-    <td>Lightweight Locked</td>
-  </tr>
-  <tr>
-  	<td colspan="4">ptr_to_heavyweight_monitor:30</td>
-    <td>10</td>
-    <td>Heavyweight Locked</td>
-  </tr>
-  <tr>
-  	<td colspan="4"></td>
-    <td>11</td>
-    <td>Markedd for GC</td>
-  </tr>
+  <tbody>
+    <tr>
+      <td colspan="5">Mark Word（32 bits）</td>
+      <td>State</td>
+    </tr>
+    <tr>
+      <td colspan="2">hashcode:25</td>
+      <td>age:4</td>
+      <td>biased_lock:1</td>
+      <td>01</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <td>thread:23</td>
+      <td>epoch:2</td>
+      <td>age:4</td>
+      <td>biased_lock:1</td>
+      <td>01</td>
+      <td>Biased</td>
+    </tr>
+    <tr>
+      <td colspan="4">ptr_to_lock_record:30</td>
+      <td>00</td>
+      <td>Lightweight Locked</td>
+    </tr>
+    <tr>
+      <td colspan="4">ptr_to_heavyweight_monitor:30</td>
+      <td>10</td>
+      <td>Heavyweight Locked</td>
+    </tr>
+    <tr>
+      <td colspan="4"></td>
+      <td>11</td>
+      <td>Markedd for GC</td>
+    </tr>
+  </tbody>
 </table>
 
 
@@ -1293,43 +1299,45 @@ Klass Word是一个指针，指向了这个对象所对应的class类对象，�
 64位虚拟机的Mark Word结构：
 
 <table style="text-align: center;">
-	<tr>
-		<td colspan="6">Mark Word（64 bits）</td>
-        <td>State</td>
-	</tr>
-	<tr>
-		<td>unused:25</td>
-		<td>hashcode:31</td>
-        <td>unused:1</td>
-        <td>age:4</td>
-        <td>biased_lock:0</td>
-        <td>01</td>
-        <td>Normal</td>
-	</tr>
-  <tr>
-  	<td>thread:54</td>
-    <td>epoch:2</td>
-    <td>unused:1</td>
-    <td>age:4</td>
-    <td>biased_lock:1</td>
-    <td>01</td>
-    <td>Biased</td>
-  </tr>
-  <tr>
-  	<td colspan="5">ptr_to_lock_record:62</td>
-    <td>00</td>
-    <td>Lightweight Locked</td>
-  </tr>
-  <tr>
-  	<td colspan="5">ptr_to_heavyweight_monitor:62</td>
-    <td>10</td>
-    <td>Heavyweight Locked</td>
-  </tr>
-  <tr>
-  	<td colspan="5"></td>
-    <td>11</td>
-    <td>Markedd for GC</td>
-  </tr>
+  <tbody>
+    <tr>
+      <td colspan="6">Mark Word（64 bits）</td>
+      <td>State</td>
+    </tr>
+    <tr>
+      <td>unused:25</td>
+      <td>hashcode:31</td>
+      <td>unused:1</td>
+      <td>age:4</td>
+      <td>biased_lock:0</td>
+      <td>01</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <td>thread:54</td>
+      <td>epoch:2</td>
+      <td>unused:1</td>
+      <td>age:4</td>
+      <td>biased_lock:1</td>
+      <td>01</td>
+      <td>Biased</td>
+    </tr>
+    <tr>
+      <td colspan="5">ptr_to_lock_record:62</td>
+      <td>00</td>
+      <td>Lightweight Locked</td>
+    </tr>
+    <tr>
+      <td colspan="5">ptr_to_heavyweight_monitor:62</td>
+      <td>10</td>
+      <td>Heavyweight Locked</td>
+    </tr>
+    <tr>
+      <td colspan="5"></td>
+      <td>11</td>
+      <td>Markedd for GC</td>
+    </tr>
+  </tbody>
 </table>
 
 
